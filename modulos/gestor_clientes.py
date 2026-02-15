@@ -1,14 +1,21 @@
 # Modulo Gestor de clientes
 
-#Importacion desde cliente, las subclases de clientes
+#Importación desde cliente, las subclases de clientes
 from modulos.cliente import ClienteRegular, ClientePremium, ClienteCorporativo
+#Importación desde persistencias, funciones de persistencia para guardar y guardar en formato CSV o TXT
+from modulos.persistencias import guardar_clientes_txt, cargar_clientes_txt, guardar_clientes_csv, cargar_clientes_csv
 
 
+# Clase que administra todos los clientes del sistema
 class GestorClientes:
-    def __init__(self):
-        # Inicializa una lista vacía que servirá como "base de datos" temporal
-        # donde se guardarán todos los objetos de tipo cliente.
-        self.lista_clientes = []
+    def __init__(self, formato="csv"):
+        # Se deja por defecto el formato csv para la persistencia de datos
+        self.formato = formato
+        # Si se ingresa el (formato="txt") al llamar la clase GestorClientes(formato="txt") este guardara en archivo TXT 
+        if formato == "txt":
+            self.lista_clientes = cargar_clientes_txt()
+        else:
+            self.lista_clientes = cargar_clientes_csv()
 
     # =========================
     #     AGREGAR CLIENTE
@@ -28,6 +35,7 @@ class GestorClientes:
             return
 
         # Recorre la lista objeto por objeto.
+        print("\n--- LISTA DE CLIENTES ---")
         for cliente in self.lista_clientes:
             # Aquí ocurre el polimorfismo: se llama al método __str__ de cada cliente.
             print(cliente)
@@ -58,3 +66,14 @@ class GestorClientes:
         else:
             # Si el ID no existía, informa el error.
             print("Cliente no encontrado.")
+
+    # =========================
+    #    GUARDAR EN TXT y CSV
+    # =========================
+    def guardar(self):
+        # Guarda la lista en el archivo CSV o TXT 
+        if self.formato == "txt":
+            guardar_clientes_txt(self.lista_clientes)
+        else:
+            guardar_clientes_csv(self.lista_clientes)
+        print("Datos guardados correctamente.")
