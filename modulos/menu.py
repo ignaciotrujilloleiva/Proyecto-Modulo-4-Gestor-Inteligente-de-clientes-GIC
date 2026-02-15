@@ -1,3 +1,6 @@
+# Menú principal del sistema
+# Encargado de solicitar los datos al usuario
+
 from modulos.gestor_clientes import GestorClientes
 from modulos.cliente import Cliente
 
@@ -14,8 +17,11 @@ def menu():
         print("==============================")
         print("1. Crear cliente")
         print("2. Listar clientes")
-        print("3. Eliminar cliente")
-        print("4. Salir")
+        print("3. Buscar cliente")
+        print("4. Editar cliente")
+        print("5. Eliminar cliente")
+        print("6. Salir")
+
 
         opcion = input("Seleccione una opción: ").strip()
 
@@ -27,9 +33,15 @@ def menu():
                 listar_clientes()
 
             elif opcion == "3":
-                eliminar_cliente()
+                buscar_cliente()
 
             elif opcion == "4":
+                editar_cliente()
+
+            elif opcion == "5":
+                eliminar_cliente()
+
+            elif opcion == "6":
                 print("\nSaliendo del sistema...")
                 break
 
@@ -84,7 +96,62 @@ def listar_clientes():
     for cliente in clientes:
         print(cliente)
 
-# Función 3 para eliminar un cliente mediante el ID
+# Función 3° para buscar cliente mediante su ID
+def buscar_cliente():
+    print("\n--- Buscar cliente por ID ---")
+
+    try:
+        id_cliente = int(input("Ingrese ID: "))
+        cliente = gestor.buscar_cliente(id_cliente)
+
+        if cliente:
+            print("\nCliente encontrado:")
+            print(cliente)
+        else:
+            print("Cliente no existe")
+
+    except ValueError:
+        print("ID inválido")
+
+# Función 4° para edición de datos del cliente
+def editar_cliente():
+    print("\n--- Editar cliente ---")
+
+    try:
+        id_cliente = int(input("ID del cliente: "))
+        cliente = gestor.buscar_cliente(id_cliente)
+
+        if not cliente:
+            print("Cliente no encontrado")
+            return
+
+        print("Deje vacío para mantener valor actual\n")
+
+        nombre = input(f"Nombre ({cliente.nombre}): ") or cliente.nombre
+        apellido = input(f"Apellido ({cliente.apellido}): ") or cliente.apellido
+        email = input(f"Email ({cliente.email}): ") or cliente.email
+        telefono = input(f"Teléfono ({cliente.telefono}): ") or cliente.telefono
+        direccion = input(f"Dirección ({cliente.direccion}): ") or cliente.direccion
+
+        gestor.editar_cliente(
+            id_cliente,
+            nombre,
+            apellido,
+            email,
+            telefono,
+            direccion
+        )
+
+        print("✅ Cliente actualizado")
+
+    except ValueError as e:
+        print(f"❌ Error: {e}")
+
+    except Exception as e:
+        print(f"Error inesperado: {e}")
+
+
+# Función 5 para eliminar un cliente mediante el ID
 def eliminar_cliente():
     print("\n--- Eliminar cliente ---")
 

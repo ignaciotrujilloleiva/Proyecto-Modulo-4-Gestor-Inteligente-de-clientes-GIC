@@ -1,4 +1,5 @@
 # Modulo Gestor de clientes
+# Contiene la logica del sistema
 
 #Importación desde cliente, las subclases de clientes
 from modulos.cliente import ClienteRegular, ClientePremium, ClienteCorporativo
@@ -9,7 +10,7 @@ from modulos.logs import registrar_log
 
 
 
-# Clase que administra todos los clientes del sistema
+# Clase Gestor que administra todos los clientes del sistema
 class GestorClientes:
     def __init__(self, formato="csv"):
         # Se deja por defecto el formato csv para la persistencia de datos
@@ -26,27 +27,20 @@ class GestorClientes:
     def agregar_cliente(self, cliente):
         # Recibe un objeto (ya validado por su propia clase) y lo guarda en la lista.
         self.lista_clientes.append(cliente)
-        print("Cliente agregado correctamente.")
         # Registro de mensaje en archivo logs.txt
         registrar_log(f"Cliente agregado: {cliente.nombre} {cliente.apellido}")
+        # Guardado automático
+        self.guardar()
 
     # =========================
     #     LISTAR CLIENTES
     # =========================
     def listar_clientes(self):
-        # Verificación de seguridad: si la lista está vacía, avisa al usuario y sale de la función.
-        if not self.lista_clientes:
-            print("No hay clientes registrados.")
-            return
-
-        # Recorre la lista objeto por objeto.
-        print("\n--- LISTA DE CLIENTES ---")
-        for cliente in self.lista_clientes:
-            # Aquí ocurre el polimorfismo: se llama al método __str__ de cada cliente.
-            print(cliente)
+        # Devuelve la lista de clientes
+        return self.lista_clientes
 
     # =========================
-    #      BUSCAR POR ID
+    #  BUSCAR CLIENTE POR ID
     # =========================
     def buscar_cliente(self, id_cliente):
         # Itera por toda la lista buscando una coincidencia de ID.
@@ -58,23 +52,43 @@ class GestorClientes:
         return None
 
     # =========================
-    #         ELIMINAR
+    #     ELIMINAR CLIENTE
     # =========================
     def eliminar_cliente(self, id_cliente):
         # Reutilizamos el método buscar_cliente para no repetir código.
         cliente = self.buscar_cliente(id_cliente)
 
-        if cliente:
-            # .remove() busca el objeto exacto en la lista y lo borra.
-            self.lista_clientes.remove(cliente)
-            print("Cliente eliminado.")
-            # Registro de mensaje en archivo logs.txt
-            registrar_log(f"Cliente eliminado ID {id_cliente}")
-        else:
-            # Si el ID no existía, informa el error.
-            print("Cliente no encontrado.")
-            # Registro de mensaje en archivo logs.txt
-            registrar_log(f"Intento fallido de eliminar ID {id_cliente}")
+        if not cliente:
+            registrar_log(f"Intento fallido eliminar ID {id_cliente}")
+            raise ValueError("Cliente no encontrado")
+        
+        # .remove() busca el objeto exacto en la lista y lo borra.
+        self.lista_clientes.remove(cliente)
+        # Registro de mensaje en archivo logs.txt
+        registrar_log(f"Cliente eliminado ID {id_cliente}")
+        
+        self.guardar()
+
+    # =========================
+    #      EDITAR CLIENTE
+    # =========================
+
+    def editar_cliente(self, id_cliente, nombre, apellido, email, telefono, direccion):
+        cliente = self.buscar_cliente_por_id(id_cliente)
+
+        if not cliente:
+            raise ValueError("Cliente no encontrado")
+
+        cliente.nombre = nombre
+        cliente.apellido = apellido
+        cliente.email = email
+        cliente.telefono = telefono
+        cliente.direccion = direccion
+
+        registrar_log(f"Cliente editado ID {id_cliente}")
+        
+        self.guardar_datos()
+
 
     # =========================
     #    GUARDAR EN TXT y CSV
@@ -88,4 +102,3 @@ class GestorClientes:
 
         # Registro de mensaje en archivo logs.txt
         registrar_log("Datos guardados en archivo")
-        print("Datos guardados correctamente.")
