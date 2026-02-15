@@ -1,0 +1,4 @@
+[2026-02-15 06:30:03] Cliente agregado: Ignacio Trujillo
+[2026-02-15 06:30:03] Cliente agregado: Ana Lopez
+[2026-02-15 06:30:03] Cliente eliminado ID 2
+[2026-02-15 06:30:03] Datos guardados en archivo

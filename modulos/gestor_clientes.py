@@ -4,6 +4,9 @@
 from modulos.cliente import ClienteRegular, ClientePremium, ClienteCorporativo
 #Importación desde persistencias, funciones de persistencia para guardar y guardar en formato CSV o TXT
 from modulos.persistencias import guardar_clientes_txt, cargar_clientes_txt, guardar_clientes_csv, cargar_clientes_csv
+#Importación desde logs, funcion para registrar mensajes en archivo logs.txt
+from modulos.logs import registrar_log
+
 
 
 # Clase que administra todos los clientes del sistema
@@ -24,6 +27,8 @@ class GestorClientes:
         # Recibe un objeto (ya validado por su propia clase) y lo guarda en la lista.
         self.lista_clientes.append(cliente)
         print("Cliente agregado correctamente.")
+        # Registro de mensaje en archivo logs.txt
+        registrar_log(f"Cliente agregado: {cliente.nombre} {cliente.apellido}")
 
     # =========================
     #     LISTAR CLIENTES
@@ -63,9 +68,13 @@ class GestorClientes:
             # .remove() busca el objeto exacto en la lista y lo borra.
             self.lista_clientes.remove(cliente)
             print("Cliente eliminado.")
+            # Registro de mensaje en archivo logs.txt
+            registrar_log(f"Cliente eliminado ID {id_cliente}")
         else:
             # Si el ID no existía, informa el error.
             print("Cliente no encontrado.")
+            # Registro de mensaje en archivo logs.txt
+            registrar_log(f"Intento fallido de eliminar ID {id_cliente}")
 
     # =========================
     #    GUARDAR EN TXT y CSV
@@ -76,4 +85,7 @@ class GestorClientes:
             guardar_clientes_txt(self.lista_clientes)
         else:
             guardar_clientes_csv(self.lista_clientes)
+
+        # Registro de mensaje en archivo logs.txt
+        registrar_log("Datos guardados en archivo")
         print("Datos guardados correctamente.")
