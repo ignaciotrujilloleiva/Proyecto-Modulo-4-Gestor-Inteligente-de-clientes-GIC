@@ -3,7 +3,10 @@
 #Importaciones desde validaciónes
 from modulos.validaciones import validar_email, validar_telefono
 
-# Clase padre
+# =========================
+#        CLASE PADRE
+# =========================
+
 class Cliente:
     contador_id = 1 #atributo de clase para generar ID's automáticos
 
@@ -85,11 +88,51 @@ class Cliente:
 
 # Métodos especiales
 
-# Define cómo se verá el objeto al hacer: print(cliente)
+# Define cómo se verá el objeto al hacer el print del cliente
     def __str__(self):
-        return f"[{self.id}] {self.nombre} - {self.email} - {self.telefono}"
+        return f"[{self.id}] {self.nombre} {self.apellido} - {self.email} - {self.telefono}"
 
 # Define la lógica de igualdad (cliente1 == cliente2)
 # Verifica que el otro objeto sea de la misma clase y tengan el mismo ID
     def __eq__(self, other):
         return isinstance(other, Cliente) and self.id == other.id
+    
+
+# =========================
+#        SUBCLASES
+# =========================
+
+# Aplicación de herencia
+# super().__init__ llama al constructor de la clase padre (Cliente).
+# self.tipo = es para el atributo específico para identificar el nivel del cliente.
+# La subclase ClientePremium recibe un parámetro extra: 'descuento', que por defecto es 0.1 (10%).
+# La subclase ClienteCorporativo recibe el paramentro extra: 'empresa'
+# Se sobreescribe el método __str__ para que al imprimir el objeto según el cliente.
+
+class ClienteRegular(Cliente):
+    def __init__(self, nombre, apellido, email, telefono, direccion):
+        super().__init__(nombre, apellido, email, telefono, direccion)
+        self.tipo = "Regular"
+
+    def __str__(self):
+        return f"[{self.id}] {self.nombre} {self.apellido} (Regular)"
+
+
+class ClientePremium(Cliente):
+    def __init__(self, nombre, apellido, email, telefono, direccion, descuento=0.1):
+        super().__init__(nombre, apellido, email, telefono, direccion)
+        self.tipo = "Premium"
+        self.descuento = descuento
+
+    def __str__(self):
+        return f"[{self.id}] {self.nombre} {self.apellido} (Premium - Desc:{self.descuento*100}%)"
+
+
+class ClienteCorporativo(Cliente):
+    def __init__(self, nombre, apellido, email, telefono, direccion, empresa):
+        super().__init__(nombre, apellido, email, telefono, direccion)
+        self.tipo = "Corporativo"
+        self.empresa = empresa
+
+    def __str__(self):
+        return f"[{self.id}] {self.nombre} {self.apellido} ({self.empresa} - Corporativo)"
