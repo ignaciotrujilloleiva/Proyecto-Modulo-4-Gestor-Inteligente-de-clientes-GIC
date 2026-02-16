@@ -89,7 +89,7 @@ class GestorClientes:
 
         registrar_log(f"Cliente editado ID {id_cliente}")
         # Guardado automático
-        self.guardar_datos()
+        self.guardar()
 
 
     # =========================
