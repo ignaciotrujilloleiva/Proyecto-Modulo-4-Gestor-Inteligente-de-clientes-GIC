@@ -6,6 +6,7 @@ from modulos.gestor_clientes import GestorClientes
 from modulos.cliente import ClienteRegular, ClientePremium, ClienteCorporativo
 from modulos.validaciones import validar_nombre, validar_apellido, validar_email, validar_telefono, validar_direccion
 
+# El codigo tiene la opcion de funcionar con archivos CSV o TXT, por defecto utiliza CSV y para trabajar en TXT se debe indicar el formato quedando de la siguiente forma; gestor = GestorClientes(formato ="txt")
 gestor = GestorClientes()
 
 # =========================================================

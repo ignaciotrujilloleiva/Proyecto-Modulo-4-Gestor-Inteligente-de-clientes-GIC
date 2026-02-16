@@ -49,3 +49,14 @@
 [2026-02-15 23:04:59] Datos guardados en archivo
 [2026-02-15 23:05:31] Cliente agregado: Ignacio Trujillo
 [2026-02-15 23:05:31] Datos guardados en archivo
+[2026-02-15 23:23:49] Cliente agregado: Ignacio Trujillo
+[2026-02-15 23:23:49] Datos guardados en archivo
+[2026-02-15 23:24:27] Cliente editado ID 1
+[2026-02-15 23:31:21] Cliente editado ID 1
+[2026-02-15 23:32:46] Cliente agregado: Alejandro Fusset
+[2026-02-15 23:32:46] Datos guardados en archivo
+[2026-02-15 23:44:49] Datos guardados en archivo
+[2026-02-15 23:50:19] Datos guardados en archivo
+[2026-02-15 23:50:58] Cliente agregado: Barbara Cortes
+[2026-02-15 23:50:58] Datos guardados en archivo
+[2026-02-15 23:51:03] Datos guardados en archivo

@@ -50,7 +50,8 @@ def cargar_clientes_txt():
             datos = linea.strip().split("|")
 
             tipo = datos[0]
-            nombre = datos[2] # El índice 1 es el ID que se genera automaticamente
+            id_cliente = datos [1]
+            nombre = datos[2]
             apellido = datos[3]
             email = datos[4]
             telefono = datos[5]
@@ -60,13 +61,13 @@ def cargar_clientes_txt():
 
             # Se crea el objeto segun el tipo de cliente
             if tipo == "Regular":
-                cliente = ClienteRegular(nombre, apellido, email, telefono, direccion)
+                cliente = ClienteRegular(id_cliente, nombre, apellido, email, telefono, direccion)
 
             elif tipo == "Premium":
-                cliente = ClientePremium(nombre, apellido, email, telefono, direccion, float(extra))
+                cliente = ClientePremium(id_cliente, nombre, apellido, email, telefono, direccion, float(extra))
 
             elif tipo == "Corporativo":
-                cliente = ClienteCorporativo(nombre, apellido, email, telefono, direccion, extra)
+                cliente = ClienteCorporativo(id_cliente, nombre, apellido, email, telefono, direccion, extra)
 
             else:
                 continue

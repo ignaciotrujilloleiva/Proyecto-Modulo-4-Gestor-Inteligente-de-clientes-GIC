@@ -1,7 +1,8 @@
 tipo,id,nombre,apellido,email,telefono,direccion,extra
+Premium,1,Ignacio,Trujillo,Ignai@mail.com,85663121,Limache,5.0
 Regular,2,Francisco,Perez,Pancho@mail.com,12345678,Limache,
 Regular,3,Ilonka,Perez,Maskd@masd.com,123425647,Limache,
+Corporativo,4,Macarena,Trujillo,Maca@mail.com,85412569,Limache,GTD
+Premium,6,Barbara,Cortes,Baby@mail.com,12345684,Laureles,0.2
 Corporativo,9,Abigail,Ramirez,Abi@mail.com,4861621354,Calera,MiraPadel
 Corporativo,10,Pepe,Leiva,Pepe@mail.com,123456874,Viña,Mishis
-Corporativo,4,Macarena,Trujillo,Maca@mail.com,85412569,Limache,GTD
-Premium,1,Ignacio,Trujillo,Ignai@mail.com,85663121,Limache,5.0

@@ -1,2 +1,4 @@
-Premium|1|Ana|Lopez|ana@mail.com|99999999|Valpo|0.2
+Premium|1|Macarena|Trujillo|Maca@mail.com|123456789|Stgo|0.2
+Premium|2|Ignacio|Trujillo|Ignac@mail.com|12345678|Limache|1.0
 Premium|3|Ana|Lopez|ana@mail.com|99999999|Valpo|0.2
+Corporativo|4|Alejandro|Fusset|Ale@mail.com|456789123|Madrid|España

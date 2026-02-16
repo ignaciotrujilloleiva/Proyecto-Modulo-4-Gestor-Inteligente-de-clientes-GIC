@@ -34,7 +34,11 @@ class GestorClientes:
     #     LISTAR CLIENTES
     # =========================
     def listar_clientes(self):
-        # Devuelve la lista de clientes
+        # Se incorpora para ordena y guarda archivo ordenado mediante ID
+        self.lista_clientes.sort(key=lambda c: int(c.id))
+        # Se guarda el archivo ya ordenado
+        self.guardar()
+        # Devuelve la lista
         return self.lista_clientes
 
     # =========================
