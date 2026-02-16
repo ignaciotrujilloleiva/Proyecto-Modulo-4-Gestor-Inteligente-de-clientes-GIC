@@ -125,24 +125,40 @@ def cargar_clientes_csv():
 
         for fila in reader:
             tipo = fila["tipo"]
+            #Se incorpora ID para uso en los tipos de clientes
+            id_cliente = int(fila["id"]) 
 
             # Sacamos los datos usando las etiquetas que pusimos en la cabecera.
             if tipo == "Regular":
                 cliente = ClienteRegular(
-                    fila["nombre"], fila["apellido"], fila["email"],
-                    fila["telefono"], fila["direccion"]
+                    id_cliente,
+                    fila["nombre"],
+                    fila["apellido"],
+                    fila["email"],
+                    fila["telefono"],
+                    fila["direccion"]
                 )
 
             elif tipo == "Premium":
                 cliente = ClientePremium(
-                    fila["nombre"], fila["apellido"], fila["email"],
-                    fila["telefono"], fila["direccion"], float(fila["extra"])
+                    id_cliente,
+                    fila["nombre"],
+                    fila["apellido"],
+                    fila["email"],
+                    fila["telefono"],
+                    fila["direccion"],
+                    float(fila["extra"]) if fila["extra"] else 0
                 )
 
             elif tipo == "Corporativo":
                 cliente = ClienteCorporativo(
-                    fila["nombre"], fila["apellido"], fila["email"],
-                    fila["telefono"], fila["direccion"], fila["extra"]
+                    id_cliente,
+                    fila["nombre"],
+                    fila["apellido"],
+                    fila["email"],
+                    fila["telefono"],
+                    fila["direccion"],
+                    fila["extra"]
                 )
             else:
                 continue

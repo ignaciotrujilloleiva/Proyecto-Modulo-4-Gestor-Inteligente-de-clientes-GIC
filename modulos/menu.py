@@ -56,6 +56,17 @@ def menu():
 # INPUTS VALIDOS
 # =========================================================
 
+def pedir_id():
+    while True:
+        try:
+            valor = int(input("ID: "))
+            if gestor.buscar_cliente(valor):
+                print("❌ Ese ID ya existe")
+                continue
+            return valor
+        except ValueError:
+            print("❌ ID inválido")
+
 def pedir_nombre():
     while True:
         try:
@@ -114,13 +125,11 @@ def pedir_tipo_cliente():
 
         print("❌ Tipo inválido")
 
-# =========================================================
-# CREAR
-# =========================================================
-
+# Función 1° para Crear clientes
 def crear_cliente():
     print("\n--- Crear cliente ---")
 
+    id_cliente = pedir_id()
     nombre = pedir_nombre()
     apellido = pedir_apellido()
     email = pedir_email()
@@ -130,14 +139,14 @@ def crear_cliente():
 
     try:
         if tipo == "1":
-            cliente = ClienteRegular(nombre, apellido, email, telefono, direccion)
+            cliente = ClienteRegular(id_cliente, nombre, apellido, email, telefono, direccion)
 
         elif tipo == "2":
             while True:
                 try:
                     valor = input("Descuento (0.1 = 10% | Enter=10%): ").strip()
                     descuento = float(valor) if valor else 0.1
-                    cliente = ClientePremium(nombre, apellido, email, telefono, direccion, descuento)
+                    cliente = ClientePremium(id_cliente, nombre, apellido, email, telefono, direccion, descuento)
                     break
                 except ValueError:
                     print("❌ Descuento inválido")
@@ -146,7 +155,7 @@ def crear_cliente():
             while True:
                 empresa = input("Empresa: ").strip()
                 if empresa:
-                    cliente = ClienteCorporativo(nombre, apellido, email, telefono, direccion, empresa)
+                    cliente = ClienteCorporativo(id_cliente, nombre, apellido, email, telefono, direccion, empresa)
                     break
                 print("❌ Debe ingresar empresa")
 

@@ -9,14 +9,10 @@ from modulos.validaciones import (validar_nombre, validar_apellido, validar_emai
 # =========================
 
 class Cliente:
-    contador_id = 1 #atributo de clase para generar ID's automáticos
-
-    def __init__(self, nombre, apellido, email, telefono, direccion):
-        # Asignación de ID automática
-        self._id = Cliente.contador_id
-        Cliente.contador_id += 1
-
+    def __init__(self, id_cliente, nombre, apellido, email, telefono, direccion):
+     
         #Setters con validación
+        self._id = int(id_cliente)
         self.nombre = nombre
         self.apellido = apellido
         self.email = email
@@ -75,6 +71,9 @@ class Cliente:
 # Define cómo se verá el objeto al hacer el print del cliente
     def __str__(self):
         return f"[{self.id}] {self.nombre} {self.apellido} - {self.email} - {self.telefono}"
+    
+    def __eq__(self, other):
+        return isinstance(other, Cliente) and self.id == other.id
 
 # =========================
 #        SUBCLASES
@@ -91,16 +90,16 @@ class Cliente:
 #    SUBCLASE: REGULAR
 # =========================
 class ClienteRegular(Cliente):
-    def __init__(self, nombre, apellido, email, telefono, direccion):
-        super().__init__(nombre, apellido, email, telefono, direccion)
+    def __init__(self, id_cliente, nombre, apellido, email, telefono, direccion):
+        super().__init__(id_cliente, nombre, apellido, email, telefono, direccion)
         self.tipo = "Regular"
 
 # =========================
 #    SUBCLASE: PREMIUM
 # =========================
 class ClientePremium(Cliente):
-    def __init__(self, nombre, apellido, email, telefono, direccion, descuento=0.1):
-        super().__init__(nombre, apellido, email, telefono, direccion)
+    def __init__(self, id_cliente, nombre, apellido, email, telefono, direccion, descuento=0.1):
+        super().__init__(id_cliente, nombre, apellido, email, telefono, direccion)
         self.tipo = "Premium"
         self.descuento = descuento
 
@@ -108,7 +107,7 @@ class ClientePremium(Cliente):
 #   SUBCLASE: CORPORATIVO
 # =========================
 class ClienteCorporativo(Cliente):
-    def __init__(self, nombre, apellido, email, telefono, direccion, empresa):
-        super().__init__(nombre, apellido, email, telefono, direccion)
+    def __init__(self, id_cliente, nombre, apellido, email, telefono, direccion, empresa):
+        super().__init__(id_cliente, nombre, apellido, email, telefono, direccion)
         self.tipo = "Corporativo"
         self.empresa = empresa
