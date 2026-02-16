@@ -3,3 +3,41 @@
 [2026-02-15 06:30:03] Cliente eliminado ID 2
 [2026-02-15 06:30:03] Datos guardados en archivo
 [2026-02-15 17:48:18] Cliente agregado: Macarena Trujillo
+[2026-02-15 20:39:29] Cliente agregado: Gricelda Leiva
+[2026-02-15 20:47:51] Cliente agregado: Tity Leiva
+[2026-02-15 20:47:51] Datos guardados en archivo
+[2026-02-15 21:11:55] Cliente agregado: Francisco Perez
+[2026-02-15 21:11:55] Datos guardados en archivo
+[2026-02-15 21:37:44] Cliente agregado: Ilonka Perez
+[2026-02-15 21:37:44] Datos guardados en archivo
+[2026-02-15 21:39:41] Cliente agregado: Cliente 1 Apellido 1
+[2026-02-15 21:39:41] Datos guardados en archivo
+[2026-02-15 22:03:24] Cliente agregado: Cliente 1 Apellido 1
+[2026-02-15 22:03:24] Datos guardados en archivo
+[2026-02-15 22:04:20] Cliente agregado: Cliente2 Apellido2
+[2026-02-15 22:04:20] Datos guardados en archivo
+[2026-02-15 22:04:45] Cliente agregado: Cleinte3 Ape3
+[2026-02-15 22:04:45] Datos guardados en archivo
+[2026-02-15 22:28:19] Cliente agregado: Cliente 1 Apellido 1
+[2026-02-15 22:28:19] Datos guardados en archivo
+[2026-02-15 22:28:55] Cliente editado ID 9
+[2026-02-15 22:29:43] Cliente agregado: Cliente 2 Ape2
+[2026-02-15 22:29:43] Datos guardados en archivo
+[2026-02-15 22:32:50] Cliente agregado: Abigail Ramirez
+[2026-02-15 22:32:50] Datos guardados en archivo
+[2026-02-15 22:33:29] Cliente eliminado ID 2
+[2026-02-15 22:33:29] Datos guardados en archivo
+[2026-02-15 22:33:41] Cliente eliminado ID 5
+[2026-02-15 22:33:41] Datos guardados en archivo
+[2026-02-15 22:34:45] Cliente agregado: Pepe Leiva
+[2026-02-15 22:34:45] Datos guardados en archivo
+[2026-02-15 22:36:27] Cliente eliminado ID 6
+[2026-02-15 22:36:27] Datos guardados en archivo
+[2026-02-15 22:36:32] Cliente eliminado ID 7
+[2026-02-15 22:36:32] Datos guardados en archivo
+[2026-02-15 22:36:41] Cliente eliminado ID 4
+[2026-02-15 22:36:41] Datos guardados en archivo
+[2026-02-15 22:36:46] Cliente eliminado ID 5
+[2026-02-15 22:36:46] Datos guardados en archivo
+[2026-02-15 22:36:49] Cliente eliminado ID 8
+[2026-02-15 22:36:49] Datos guardados en archivo

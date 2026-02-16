@@ -4,12 +4,32 @@
 import re
 
 
-def validar_email(email):
-    patron = r'^[\w\.-]+@[\w\.-]+\.\w+$'
-    # re.match compara el patrón con el email recibido, de ser igual el patron este retornara un true
-    return re.match(patron, email) is not None
+def validar_nombre(valor):
+    if not valor.strip():
+        raise ValueError("El nombre no puede estar vacío")
+    return valor
 
 
-def validar_telefono(telefono):
-    # Valida que el telefono cumpla que todos los caracteres sean digitos y tenga un largo = o mayor a 8 digitos
-    return telefono.isdigit() and len(telefono) >= 8
+def validar_apellido(valor):
+    if not valor.strip():
+        raise ValueError("El apellido no puede estar vacío")
+    return valor
+
+
+def validar_email(valor):
+    patron = r"[^@]+@[^@]+\.[^@]+"
+    if not re.match(patron, valor):
+        raise ValueError("Email inválido")
+    return valor
+
+
+def validar_telefono(valor):
+    if not valor.isdigit() or len(valor) < 8:
+        raise ValueError("Teléfono inválido")
+    return valor
+
+
+def validar_direccion(valor):
+    if not valor.strip():
+        raise ValueError("Dirección vacía")
+    return valor

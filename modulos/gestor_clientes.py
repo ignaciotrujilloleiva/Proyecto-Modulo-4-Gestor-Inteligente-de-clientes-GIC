@@ -1,8 +1,6 @@
 # Modulo Gestor de clientes
 # Contiene la logica del sistema
 
-#Importación desde cliente, las subclases de clientes
-from modulos.cliente import ClienteRegular, ClientePremium, ClienteCorporativo
 #Importación desde persistencias, funciones de persistencia para guardar y guardar en formato CSV o TXT
 from modulos.persistencias import guardar_clientes_txt, cargar_clientes_txt, guardar_clientes_csv, cargar_clientes_csv
 #Importación desde logs, funcion para registrar mensajes en archivo logs.txt
@@ -66,7 +64,7 @@ class GestorClientes:
         self.lista_clientes.remove(cliente)
         # Registro de mensaje en archivo logs.txt
         registrar_log(f"Cliente eliminado ID {id_cliente}")
-        
+        # Guardado automático
         self.guardar()
 
     # =========================
@@ -74,7 +72,7 @@ class GestorClientes:
     # =========================
 
     def editar_cliente(self, id_cliente, nombre, apellido, email, telefono, direccion):
-        cliente = self.buscar_cliente_por_id(id_cliente)
+        cliente = self.buscar_cliente(id_cliente)
 
         if not cliente:
             raise ValueError("Cliente no encontrado")
@@ -86,7 +84,7 @@ class GestorClientes:
         cliente.direccion = direccion
 
         registrar_log(f"Cliente editado ID {id_cliente}")
-        
+        # Guardado automático
         self.guardar_datos()
 
 
